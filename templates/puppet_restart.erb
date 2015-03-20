@@ -1,0 +1,2 @@
+# Restart puppet daily (memory leaks over time), unless puppet isn't running
+<%=@cron_minute_erb -%> 4 * * * root (<%=@service_path_erb -%> puppet status 2>&1 >/dev/null) && <%=@service_path_erb -%> puppet restart 2>&1 >/dev/null

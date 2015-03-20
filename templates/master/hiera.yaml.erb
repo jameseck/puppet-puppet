@@ -1,0 +1,27 @@
+---
+:backends:
+    - yaml
+    - eyaml
+
+:logger: console
+
+:hierarchy:
+    - "fqdn/%{::trusted_certname}"
+    - "role/%{::role}"
+    - "platform/%{::platform}"
+    - "location/%{::location}"
+    - "calling_module/%{calling_module}"
+    - "common/common"
+
+:yaml:
+    :datadir: "/etc/puppet/environments/%{environment}/hieradata"
+
+:eyaml:
+    :datadir: "/etc/puppet/environments/%{environment}/hieradata"
+    :pkcs7_private_key: /etc/puppet/hiera_keys/private_key.pkcs7.pem
+    :pkcs7_public_key: /etc/puppet/hiera_keys/public_key.pkcs7.pem
+
+:puppet:
+    :datasource: data
+
+:merge_behavior: deeper

@@ -1,0 +1,2 @@
+#Look for any old puppetdlock files that might be preventing Puppet from running.
+0 * * * * root /usr/bin/find /var/lib/puppet/state/ -type f -name puppetdlock -mmin +50 -exec rm -f {} \;

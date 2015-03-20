@@ -1,0 +1,3 @@
+#This file is managed by Puppet
+#Clean up stored reports on the Puppet Master
+0 * * * * root if [ -d /var/lib/puppet/reports ]; then /usr/bin/find /var/lib/puppet/reports -type f -mtime +7 -exec rm {} \;; fi
