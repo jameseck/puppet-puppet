@@ -47,9 +47,11 @@ class puppet::config (
     ip     => $::puppet::puppet_master_ip,
   }
 
-  host { $::puppet::puppet_ca_host:
-    ensure => present,
-    ip     => $::puppet::puppet_ca_ip,
+  if ( $::puppet::puppet_master_host != $::puppet::puppet_ca_host ) {
+    host { $::puppet::puppet_ca_host:
+      ensure => present,
+      ip     => $::puppet::puppet_ca_ip,
+    }
   }
 
   if ( $::osfamily == 'Debian' ) {
